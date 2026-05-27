@@ -28,6 +28,8 @@ Then in any Claude Code session:
 
 Open **http://localhost:3141**. Done.
 
+![Codescape dashboard](screenshot/image.png)
+
 ---
 
 ## What it produces

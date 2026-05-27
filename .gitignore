@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.codescape/
+*.local
+.env
+.env.local

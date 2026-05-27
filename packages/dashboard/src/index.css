@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-root: #0a0a0a;
+  --color-surface: #111111;
+  --color-elevated: #1a1a1a;
+  --color-border-subtle: #222222;
+  --color-border-medium: #333333;
+  --color-text-primary: #f0ece4;
+  --color-text-secondary: #c8c2b8;
+  --color-text-muted: #7a7570;
+  --color-accent: #d4a574;
+  --color-accent-dim: #b8895c;
+  --color-accent-bright: #e8c090;
+
+  /* Node type colors */
+  --color-node-file: #7ec8e3;
+  --color-node-function: #98d8a0;
+  --color-node-class: #f5c67a;
+  --color-node-module: #c3a8e8;
+  --color-node-concept: #d4a574;
+  --color-node-config: #a0c8a0;
+  --color-node-document: #e8b4b8;
+  --color-node-service: #f0a060;
+  --color-node-table: #78c8b4;
+  --color-node-endpoint: #80b8f0;
+  --color-node-pipeline: #d0a0d0;
+  --color-node-schema: #c8d880;
+  --color-node-resource: #e8c860;
+  --color-node-article: #b8d8e8;
+  --color-node-entity: #d8c8f0;
+  --color-node-topic: #b8e8c8;
+  --color-node-claim: #f0d8a8;
+  --color-node-source: #d8d8d8;
+
+  --font-heading: "DM Serif Display", Georgia, serif;
+
+  --animate-slide-up: slide-up 0.25s ease-out;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-root);
+  color: var(--color-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* React Flow overrides */
+.react-flow__background {
+  background-color: var(--color-root) !important;
+}
+.react-flow__controls {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: 8px !important;
+}
+.react-flow__controls-button {
+  background: transparent !important;
+  border: none !important;
+  color: var(--color-text-muted) !important;
+  fill: var(--color-text-muted) !important;
+}
+.react-flow__controls-button:hover {
+  color: var(--color-text-primary) !important;
+  fill: var(--color-text-primary) !important;
+}
+.react-flow__minimap {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: 8px !important;
+}

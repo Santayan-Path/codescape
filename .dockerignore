@@ -1,0 +1,12 @@
+node_modules
+**/node_modules
+**/dist
+.git
+.codescape
+.claude-plugin
+skills
+*.md
+!README.md
+eslint.config.mjs
+.env
+.env.local

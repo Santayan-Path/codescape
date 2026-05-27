@@ -1,0 +1,51 @@
+services:
+
+  # ── analyze ────────────────────────────────────────────────────────────────
+  # Analyzes a project and writes .codescape/knowledge-graph.json into it.
+  #
+  # Usage:
+  #   PROJECT=/path/to/repo ANTHROPIC_API_KEY=sk-ant-... docker compose run --rm analyze
+  #
+  analyze:
+    build: .
+    volumes:
+      - ${PROJECT:-.}:/project
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    command: analyze /project
+
+  # ── dashboard ──────────────────────────────────────────────────────────────
+  # Serves the interactive dashboard for an already-analyzed project.
+  #
+  # Usage (after running analyze):
+  #   PROJECT=/path/to/repo docker compose up dashboard
+  #   Then open http://localhost:3141
+  #
+  dashboard:
+    build: .
+    ports:
+      - "${PORT:-3141}:3141"
+    volumes:
+      - ${PROJECT:-.}:/project
+    command: serve /project
+    restart: unless-stopped
+
+  # ── all-in-one ─────────────────────────────────────────────────────────────
+  # Analyze a project and immediately open the dashboard in one step.
+  #
+  # Usage:
+  #   PROJECT=/path/to/repo ANTHROPIC_API_KEY=sk-ant-... docker compose run --rm --service-ports full
+  #
+  full:
+    build: .
+    ports:
+      - "${PORT:-3141}:3141"
+    volumes:
+      - ${PROJECT:-.}:/project
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        node /app/cli/dist/index.js analyze /project && \
+        node /app/cli/dist/index.js serve /project

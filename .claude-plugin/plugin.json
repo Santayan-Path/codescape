@@ -1,0 +1,15 @@
+{
+  "name": "codescape",
+  "description": "Analyze any codebase or document set and explore it as an interactive knowledge graph",
+  "version": "0.1.0",
+  "author": {
+    "name": "spaul"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codebase-analysis",
+    "knowledge-graph",
+    "architecture",
+    "dashboard"
+  ]
+}

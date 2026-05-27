@@ -32,6 +32,54 @@ Open **http://localhost:3141**. Done.
 
 ---
 
+## Example — analyzing an existing project
+
+Say you have a repo at `~/projects/my-api` and want to understand its architecture.
+
+**Step 1 — Install Codescape (one-time, from anywhere in your terminal):**
+
+```bash
+~/path/to/codescape/install-skill.sh
+cd ~/path/to/codescape && docker compose build
+```
+
+**Step 2 — Open Claude Code inside your project:**
+
+```bash
+cd ~/projects/my-api
+claude
+```
+
+**Step 3 — Run the analysis:**
+
+```
+/codescape
+```
+
+Claude scans every file, maps imports, calls, and dependencies, and saves the graph to `~/projects/my-api/.codescape/knowledge-graph.json`. Takes ~5–20 minutes depending on project size.
+
+**Step 4 — Open the dashboard:**
+
+```
+/codescape-dashboard
+```
+
+Opens the interactive graph at **http://localhost:3141**. Click any node to see its summary, tags, complexity, and relationships. Use the search bar to jump to any file, class, or function.
+
+**Step 5 — Stop the dashboard when done:**
+
+```bash
+docker stop codescape-dashboard
+```
+
+**To re-analyze after making code changes:**
+
+```
+/codescape --full
+```
+
+---
+
 ## What it produces
 
 `.codescape/knowledge-graph.json` — a validated graph of nodes (files, classes, functions, services, configs, …) and typed edges (imports, calls, depends_on, …) grouped into logical layers. The dashboard visualizes it as an interactive canvas with search, filtering, and a detail sidebar.
